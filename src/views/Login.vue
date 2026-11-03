@@ -4,7 +4,7 @@
     <div
       class="hidden md:flex flex-col items-center justify-center bg-gradient-to-b from-blue-500 to-green-400 w-1/2 p-10 text-white"
     >
-      <h1 class="text-5xl font-bold mb-6">Welcome to Kakkhopath</h1>
+      <h1 class="text-5xl font-bold mb-6">Welcome to Kokkhopoth</h1>
       <p class="text-xl mb-10 text-center">
         Embark on your coding journey with our engaging and comprehensive programming courses
         tailored just for students!

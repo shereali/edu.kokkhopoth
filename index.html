@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <link id="favicon" rel="icon" href="" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kakkhopath</title>
+  <title>Kokkhopoth</title>
 </head>
 
 <body>
@@ -13,29 +13,23 @@
   <script type="module" src="/src/main.ts"></script>
   <script>
     const siteInfo = localStorage.getItem('siteInfo')
-    const jsonSiteInfo = JSON.parse(siteInfo)
-    // Function to add a favicon dynamically
+    const jsonSiteInfo = siteInfo ? JSON.parse(siteInfo) : null
     function addFavicon(faviconUrl) {
-      // Check if a favicon already exists
+      if (!faviconUrl) return
       let existingFavicon = document.querySelector('link[rel="icon"]')
-
-      // If it exists, remove it
       if (existingFavicon) {
         existingFavicon.parentNode.removeChild(existingFavicon)
       }
-
-      // Create a new link element
       const link = document.createElement('link')
-      link.rel = 'icon' // Set relationship attribute to icon
-      link.type = 'image/png' // Set the type (optional, set according to the image type)
-      link.href = faviconUrl // Set the href attribute to the favicon URL
-
-      // Append the link element to the head of the document
+      link.rel = 'icon'
+      link.type = 'image/png'
+      link.href = faviconUrl
       document.head.appendChild(link)
     }
 
-    // Call the function with the path to your favicon
-    addFavicon(jsonSiteInfo.favicon_view) // Replace with the actual path to your favicon
+    if (jsonSiteInfo && jsonSiteInfo.favicon_view) {
+      addFavicon(jsonSiteInfo.favicon_view)
+    }
   </script>
 </body>
 

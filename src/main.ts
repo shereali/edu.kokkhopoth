@@ -1,5 +1,4 @@
 // main.ts
-// import './assets/main.css'
 import './assets/styles/index.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -17,10 +16,11 @@ const app = createApp(App)
 const pinia = createPinia()
 
 app.use(pinia)
+
+// Initialize the auth store before router navigation guards run
+const authStore = useAuthStore()
+authStore.initialize()
+
 app.use(router)
 app.component('Icon', Icon)
 app.mount('#app')
-
-// Initialize the auth store after app is mounted
-const authStore = useAuthStore()
-authStore.initialize()
