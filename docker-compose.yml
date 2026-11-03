@@ -1,0 +1,25 @@
+services:
+  frontend:
+    image: ${IMAGE_BASE:-ghcr.io/${REPOSITORY_OWNER:-shereali}/edu.kokkhopoth}/frontend:${IMAGE_TAG:-latest}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ${APP_NAME:-edukokkhopoth}-frontend-1
+    restart: unless-stopped
+    env_file:
+      - .env
+    networks:
+      - default
+      - caddy_net
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  default:
+    driver: bridge
+  caddy_net:
+    external: true
+
